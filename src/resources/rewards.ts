@@ -8,9 +8,7 @@ const RESOURCE = 'rewards';
  * Returns a list of your rewards. The rewards are returned sorted by creation date by default, with the most recent
  * rewards appearing first.
  */
-const getAllRewards = async ({ queryParams = {} }: GetAllArgs = {}): Promise<
-  ListResponse<ListRewardResponse>
-> => {
+const getAllRewards = async ({ queryParams = {} }: GetAllArgs = {}): Promise<ListResponse<ListRewardResponse>> => {
   const queryString = buildSearchQueryParams(queryParams);
 
   return (await api.get(`${RESOURCE}${queryString}`))?.data;

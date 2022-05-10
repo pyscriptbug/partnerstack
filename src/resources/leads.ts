@@ -5,19 +5,14 @@ import { ConvertPayload, ConvertResponse, LeadPayload, LeadResponse } from '../t
 const RESOURCE = 'leads';
 
 /** Returns a list of your leads. The leads are returned sorted by creation date, with the most recent leads appearing first. */
-const getAllLeads = async ({ queryParams = {} }: GetAllArgs = {}): Promise<
-  ListResponse<LeadResponse>
-> => {
+const getAllLeads = async ({ queryParams = {} }: GetAllArgs = {}): Promise<ListResponse<LeadResponse>> => {
   const queryString = buildSearchQueryParams(queryParams);
 
   return (await api.get(`${RESOURCE}${queryString}`))?.data;
 };
 
 /** Retrieves the details of an existing lead. You need only supply the unique lead key that was returned upon lead creation. */
-const getLead = async ({
-  pathParams,
-  queryParams = {},
-}: GetArgs<{ key: string }>): Promise<LeadResponse> => {
+const getLead = async ({ pathParams, queryParams = {} }: GetArgs<{ key: string }>): Promise<LeadResponse> => {
   const queryString = buildSearchQueryParams(queryParams);
   const { key } = pathParams;
 
@@ -30,10 +25,7 @@ const createLead = async ({ payload }: CreateArgs<{}, LeadPayload>): Promise<Lea
 };
 
 /** Updates the specified lead by setting the values of the parameters passed. Any parameters not provided will be left unchanged. */
-const updateLead = async ({
-  payload,
-  pathParams,
-}: UpdateArgs<{ key: string }, LeadPayload>): Promise<LeadResponse> => {
+const updateLead = async ({ payload, pathParams }: UpdateArgs<{ key: string }, LeadPayload>): Promise<LeadResponse> => {
   const { key } = pathParams;
 
   return (await api.patch(`${RESOURCE}/${key}`, payload))?.data;

@@ -8,9 +8,7 @@ const RESOURCE = 'customers';
  * Returns a list of your customers. The customers are returned sorted by creation date by default, with the most recent
  * customers appearing first.
  */
-const getAllCustomers = async ({ queryParams = {} }: GetAllArgs = {}): Promise<
-  ListResponse<CustomerResponse>
-> => {
+const getAllCustomers = async ({ queryParams = {} }: GetAllArgs = {}): Promise<ListResponse<CustomerResponse>> => {
   const queryString = buildSearchQueryParams(queryParams);
 
   return (await api.get(`${RESOURCE}${queryString}`))?.data;
@@ -20,10 +18,7 @@ const getAllCustomers = async ({ queryParams = {} }: GetAllArgs = {}): Promise<
  * Retrieves the details of an existing customer. You need only supply the unique customer key that was returned upon
  * customer creation.
  */
-const getCustomer = async ({
-  pathParams,
-  queryParams = {},
-}: GetArgs<{ key: string }>): Promise<CustomerResponse> => {
+const getCustomer = async ({ pathParams, queryParams = {} }: GetArgs<{ key: string }>): Promise<CustomerResponse> => {
   const queryString = buildSearchQueryParams(queryParams);
   const { key } = pathParams;
 
@@ -31,9 +26,7 @@ const getCustomer = async ({
 };
 
 /** Creates a new customer with the data provided. */
-const createCustomer = async ({
-  payload,
-}: CreateArgs<{}, CreateCustomerPayload>): Promise<CustomerResponse> => {
+const createCustomer = async ({ payload }: CreateArgs<{}, CreateCustomerPayload>): Promise<CustomerResponse> => {
   return (await api.post(`${RESOURCE}`, payload))?.data;
 };
 

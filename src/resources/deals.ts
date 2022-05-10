@@ -5,19 +5,14 @@ import { ConvertPayload, ConvertResponse, CreateDealPayload, DealResponse, Updat
 const RESOURCE = 'deals';
 
 /** Returns a list of your deals. The deals are returned sorted by creation date, with the most recent deals appearing first. */
-const getAllDeals = async ({ queryParams = {} }: GetAllArgs = {}): Promise<
-  ListResponse<DealResponse>
-> => {
+const getAllDeals = async ({ queryParams = {} }: GetAllArgs = {}): Promise<ListResponse<DealResponse>> => {
   const queryString = buildSearchQueryParams(queryParams);
 
   return (await api.get(`${RESOURCE}${queryString}`))?.data;
 };
 
 /** Retrieves the details of an existing deal. You need only supply the unique deal key that was returned upon deal creation. */
-const getDeal = async ({
-  pathParams,
-  queryParams = {},
-}: GetArgs<{ key: string }>): Promise<DealResponse> => {
+const getDeal = async ({ pathParams, queryParams = {} }: GetArgs<{ key: string }>): Promise<DealResponse> => {
   const queryString = buildSearchQueryParams(queryParams);
   const { key } = pathParams;
 

@@ -4,7 +4,7 @@ import {
   CreatePartnershipPayload,
   ListPartnershipResponse,
   PartnershipResponse,
-  UpdatePartnershipPayload
+  UpdatePartnershipPayload,
 } from '../types';
 
 const RESOURCE = 'partnerships';

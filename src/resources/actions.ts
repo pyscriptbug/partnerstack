@@ -8,9 +8,7 @@ const RESOURCE = 'actions';
  * Returns a list of your actions. The actions are returned sorted by creation date by default, with the most recent
  * actions appearing first.
  */
-const getAllActions = async ({ queryParams = {} }: GetAllArgs = {}): Promise<
-  ListResponse<ListActionResponse>
-> => {
+const getAllActions = async ({ queryParams = {} }: GetAllArgs = {}): Promise<ListResponse<ListActionResponse>> => {
   const queryString = buildSearchQueryParams(queryParams);
 
   return (await api.get(`${RESOURCE}${queryString}`))?.data;
