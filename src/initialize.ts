@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { camelCaseToSnakeCase, snakeCaseToCamelCase } from './utils';
 
-let api: AxiosInstance;
+export let api: AxiosInstance;
 export let initialized = false;
 
 export const initializePartnerstack = ({ baseUrl, apiKey, apiSecret }: Partnerstack.Initialize) => {

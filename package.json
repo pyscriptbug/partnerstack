@@ -1,13 +1,18 @@
 {
   "name": "partnerstack",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Partnerstack fully typed API sdk",
   "main": "index.ts",
   "scripts": {
-    "test": "test",
+    "test": "jest --config jest.json",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "tslint -p tsconfig.json"
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
@@ -26,13 +31,20 @@
   "homepage": "https://github.com/pyscriptbug/partnerstack#readme",
   "dependencies": {
     "axios": "^0.27.2",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "query-string": "^7.1.1"
   },
   "devDependencies": {
+    "@types/jest": "^27.5.0",
     "@types/lodash": "^4.14.182",
+    "jest": "^28.1.0",
     "prettier": "^2.6.2",
+    "ts-jest": "^28.0.2",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.6.4"
-  }
+  },
+  "files": [
+    "lib/**/*"
+  ]
 }

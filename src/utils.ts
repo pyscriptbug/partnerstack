@@ -1,4 +1,5 @@
-import { isArray } from 'lodash';
+import { isArray, snakeCase } from 'lodash';
+import { stringify } from 'query-string';
 
 export const camelCaseToSnakeCase = (obj: any): any => {
   if (typeof obj !== 'object') return obj;
@@ -22,4 +23,10 @@ export const snakeCaseToCamelCase = (obj: any): any => {
       [newKey]: isArray(value) ? value.map(snakeCaseToCamelCase) : snakeCaseToCamelCase(value),
     };
   }, {});
+};
+
+export const buildSearchQueryParams = (params: { [key: string]: any }): string => {
+  if (!params) return '';
+  if (Object.keys(params).length === 0) return '';
+  else return `?${snakeCase(stringify(params))}`;
 };
