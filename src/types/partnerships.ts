@@ -1,33 +1,36 @@
 import { GroupData } from './groups';
 
 export type PartnershipData = Partnerstack.Manager & {
-  /**The email of the partner. */
+  /** The email of the partner. */
   email: string;
-  /**@deprecated `fields` should be the source of truth */
+  /** @deprecated `fields` should be the source of truth */
   fieldData?: Record<string, string>;
   fields?: Partnerstack.StandardObject[];
-  /**The first name of the partner. */
+  /** The first name of the partner. */
   firstName?: string;
-  /**The last name of the partner. */
+  /** The last name of the partner. */
   lastName?: string;
 
-  /**@deprecated `fields` should be the source of truth */
+  /** @deprecated `fields` should be the source of truth */
   meta?: Record<string, string>;
-  /**The partner_key you wish to use for this partner. If included, must be unique to this partner. For more information on partner_key see PartnerStackJS. */
+  /**
+   * The partner_key you wish to use for this partner. If included, must be unique to this partner. For more information
+   * on partner_key see PartnerStackJS.
+   */
   partnerKey?: string;
   tags?: string[];
-  /**The key of the group within PartnerStack that you want this partner to be placed into. */
+  /** The key of the group within PartnerStack that you want this partner to be placed into. */
   groupKey?: string;
 };
 
 export type CreatePartnershipPayload = PartnershipData;
 export type UpdatePartnershipPayload = {
   fields?: Partnerstack.StandardObject[];
-  /**The key of the group within PartnerStack that you want this partner to be placed into. */
+  /** The key of the group within PartnerStack that you want this partner to be placed into. */
   groupKey?: string;
-  /**The email of the partner manager that you would like to assign this partner. */
+  /** The email of the partner manager that you would like to assign this partner. */
   managerEmail?: string;
-  /**The key of the tier within PartnerStack that you want this partner to be placed into.*/
+  /** The key of the tier within PartnerStack that you want this partner to be placed into. */
   tierKey?: string;
 };
 
@@ -40,14 +43,14 @@ export type PartnershipResponse = Partnerstack.StandardFields &
 
 export type ListPartnershipResponse = Partnerstack.StandardFields &
   Pick<PartnershipResponse, 'email' | 'firstName' | 'lastName' | 'group' | 'team' | 'tags'> & {
-    /**timestamp for when the partner joined partnerstack */
+    /** Timestamp for when the partner joined partnerstack */
     joinedAt: number;
-    /**partnership's manager information if applicable */
+    /** Partnership's manager information if applicable */
     manager: Partnerstack.Manager;
-    /**partnership metadata */
+    /** Partnership metadata */
     mdata: Record<string, string>;
-    /**key used externally when referencing the partnership */
+    /** Key used externally when referencing the partnership */
     partnerKey: string;
-    /**latest stats data for partnership */
+    /** Latest stats data for partnership */
     stats: Record<string, number>;
   };

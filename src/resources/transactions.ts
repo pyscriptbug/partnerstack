@@ -5,7 +5,8 @@ import { buildSearchQueryParams } from '../../utils/utils';
 const RESOURCE = 'transactions';
 
 /**
- * Returns a list of your transactions. The transactions are returned sorted by creation date, with the most recent transactions appearing first.
+ * Returns a list of your transactions. The transactions are returned sorted by creation date, with the most recent
+ * transactions appearing first.
  */
 const getAllTransactions = async ({ queryParams = {} }: Partnerstack.GetAllArgs = {}): Promise<
   Partnerstack.ListResponse<TransactionResponse>
@@ -14,9 +15,7 @@ const getAllTransactions = async ({ queryParams = {} }: Partnerstack.GetAllArgs 
 
   return (await api.get(`${RESOURCE}${queryString}`))?.data;
 };
-/**
- * Creates a new transaction for a given target.
- */
+/** Creates a new transaction for a given target. */
 const createTransaction = async ({
   payload,
 }: Partnerstack.CreateArgs<{}, CreateTransactionPayload>): Promise<TransactionResponse> => {

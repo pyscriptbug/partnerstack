@@ -4,9 +4,7 @@ import { buildSearchQueryParams } from '../../utils/utils';
 
 const RESOURCE = 'deals';
 
-/**
- * Returns a list of your deals. The deals are returned sorted by creation date, with the most recent deals appearing first.
- */
+/** Returns a list of your deals. The deals are returned sorted by creation date, with the most recent deals appearing first. */
 const getAllDeals = async ({ queryParams = {} }: Partnerstack.GetAllArgs = {}): Promise<
   Partnerstack.ListResponse<DealResponse>
 > => {
@@ -15,9 +13,7 @@ const getAllDeals = async ({ queryParams = {} }: Partnerstack.GetAllArgs = {}): 
   return (await api.get(`${RESOURCE}${queryString}`))?.data;
 };
 
-/**
- * Retrieves the details of an existing deal. You need only supply the unique deal key that was returned upon deal creation.
- */
+/** Retrieves the details of an existing deal. You need only supply the unique deal key that was returned upon deal creation. */
 const getDeal = async ({
   pathParams,
   queryParams = {},
@@ -28,16 +24,12 @@ const getDeal = async ({
   return (await api.get(`${RESOURCE}/${key}${queryString}`))?.data;
 };
 
-/**
- * Creates a deal with desired params.
- */
+/** Creates a deal with desired params. */
 const createDeal = async ({ payload }: Partnerstack.CreateArgs<{}, CreateDealPayload>): Promise<DealResponse> => {
   return (await api.post(`${RESOURCE}`, payload))?.data;
 };
 
-/**
- * Updates the specified deal by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
- */
+/** Updates the specified deal by setting the values of the parameters passed. Any parameters not provided will be left unchanged. */
 const updateDeal = async ({
   payload,
   pathParams,
@@ -47,16 +39,12 @@ const updateDeal = async ({
   return (await api.patch(`${RESOURCE}/${key}`, payload))?.data;
 };
 
-/**
- * Archives the specified deal
- */
+/** Archives the specified deal */
 const deleteDeal = async ({ pathParams }: Partnerstack.DeleteArgs<{ key: string }>): Promise<void> => {
   return api.delete(`${RESOURCE}/${pathParams.key}`);
 };
 
-/**
- * Converts a deal to a customer
- */
+/** Converts a deal to a customer */
 const convertDeal = async ({
   payload,
   pathParams,

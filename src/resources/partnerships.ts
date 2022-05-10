@@ -10,7 +10,8 @@ import { buildSearchQueryParams } from '../../utils/utils';
 const RESOURCE = 'partnerships';
 
 /**
- * Returns a list of your partnerships. The partnerships are returned sorted by creation date by default, with the most recent partnerships appearing first.
+ * Returns a list of your partnerships. The partnerships are returned sorted by creation date by default, with the most
+ * recent partnerships appearing first.
  */
 const getAllPartnerships = async ({ queryParams = {} }: Partnerstack.GetAllArgs = {}): Promise<
   Partnerstack.ListResponse<ListPartnershipResponse>
@@ -21,7 +22,8 @@ const getAllPartnerships = async ({ queryParams = {} }: Partnerstack.GetAllArgs 
 };
 
 /**
- * Retrieves the details of an existing partnership. You need only supply the unique partnership key that was returned upon partnership creation.
+ * Retrieves the details of an existing partnership. You need only supply the unique partnership key that was returned
+ * upon partnership creation.
  */
 const getPartnership = async ({
   pathParams,
@@ -33,18 +35,14 @@ const getPartnership = async ({
   return (await api.get(`${RESOURCE}/${key}${queryString}`))?.data;
 };
 
-/**
- * Creates a partnership with desired params.
- */
+/** Creates a partnership with desired params. */
 const createPartnership = async ({
   payload,
 }: Partnerstack.CreateArgs<{}, CreatePartnershipPayload>): Promise<PartnershipResponse> => {
   return (await api.post(`${RESOURCE}`, payload))?.data;
 };
 
-/**
- * Updates the specific partnership by setting the values of the parameters passed.
- */
+/** Updates the specific partnership by setting the values of the parameters passed. */
 const updatePartnership = async ({
   payload,
   pathParams,
@@ -54,9 +52,7 @@ const updatePartnership = async ({
   return (await api.patch(`${RESOURCE}/${key}`, payload))?.data;
 };
 
-/**
- * Archives a partnership.
- */
+/** Archives a partnership. */
 const deletePartnership = async ({ pathParams }: Partnerstack.DeleteArgs<{ key: string }>): Promise<void> => {
   return api.delete(`${RESOURCE}/${pathParams.key}`);
 };
