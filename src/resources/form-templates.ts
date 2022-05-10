@@ -1,6 +1,6 @@
 import { api } from '../';
 import { FormTemplateResponse } from '../types';
-import { buildSearchQueryParams } from '../utils';
+import { buildSearchQueryParams } from '../../utils/utils';
 
 const RESOURCE = 'form-templates';
 

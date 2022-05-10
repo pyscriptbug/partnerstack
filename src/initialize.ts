@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { camelCaseToSnakeCase, snakeCaseToCamelCase } from './utils';
+import { camelCaseToSnakeCase, snakeCaseToCamelCase } from '../utils/utils';
 
 export let api: AxiosInstance;
 export let initialized = false;

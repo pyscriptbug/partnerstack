@@ -1,6 +1,6 @@
 import { api } from '../';
 import { GroupResponse } from '../types';
-import { buildSearchQueryParams } from '../utils';
+import { buildSearchQueryParams } from '../../utils/utils';
 
 const RESOURCE = 'groups';
 

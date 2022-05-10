@@ -1,6 +1,6 @@
 import { api } from '../';
 import { ConvertPayload, ConvertResponse, LeadPayload, LeadResponse } from '../types';
-import { buildSearchQueryParams } from '../utils';
+import { buildSearchQueryParams } from '../../utils/utils';
 
 const RESOURCE = 'leads';
 

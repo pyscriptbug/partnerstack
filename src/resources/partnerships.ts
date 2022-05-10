@@ -5,7 +5,7 @@ import {
   PartnershipResponse,
   UpdatePartnershipPayload,
 } from '../types';
-import { buildSearchQueryParams } from '../utils';
+import { buildSearchQueryParams } from '../../utils/utils';
 
 const RESOURCE = 'partnerships';
 

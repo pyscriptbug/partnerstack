@@ -1,6 +1,6 @@
 import { api } from '../';
 import { CreateCustomerPayload, CustomerResponse, UpdateCustomerPayload } from '../types';
-import { buildSearchQueryParams } from '../utils';
+import { buildSearchQueryParams } from '../../utils/utils';
 
 const RESOURCE = 'customers';
 
