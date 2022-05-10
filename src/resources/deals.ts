@@ -1,12 +1,6 @@
 import { buildSearchQueryParams } from '../../../../util/query-param-util';
 import { api } from '../api';
-import {
-  ConvertPayload,
-  ConvertResponse,
-  CreateDealPayload,
-  DealResponse,
-  UpdateDealPayload,
-} from '../types';
+import { ConvertPayload, ConvertResponse, CreateDealPayload, DealResponse, UpdateDealPayload } from '../types';
 
 const RESOURCE = 'deals';
 
@@ -31,9 +25,7 @@ const getDeal = async ({
 };
 
 /**Creates a deal with desired params. */
-const createDeal = async ({
-  payload,
-}: Partnerstack.CreateArgs<{}, CreateDealPayload>): Promise<DealResponse> => {
+const createDeal = async ({ payload }: Partnerstack.CreateArgs<{}, CreateDealPayload>): Promise<DealResponse> => {
   return (await api.post(`${RESOURCE}`, payload))?.data;
 };
 
@@ -48,9 +40,7 @@ const updateDeal = async ({
 };
 
 /**Archives the specified deal */
-const deleteDeal = async ({
-  pathParams,
-}: Partnerstack.DeleteArgs<{ key: string }>): Promise<void> => {
+const deleteDeal = async ({ pathParams }: Partnerstack.DeleteArgs<{ key: string }>): Promise<void> => {
   return api.delete(`${RESOURCE}/${pathParams.key}`);
 };
 

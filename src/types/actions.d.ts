@@ -1,3 +1,5 @@
+import { CustomerResponse } from './customers';
+
 export type ActionData = {
   /**The identifier of the target specified in target_type. For a customer, this is the customer key. For a partnership, it is their partner key. */
   targetKey: string;

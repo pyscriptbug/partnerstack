@@ -40,19 +40,14 @@ const createPartnership = async ({
 const updatePartnership = async ({
   payload,
   pathParams,
-}: Partnerstack.UpdateArgs<
-  { key: string },
-  UpdatePartnershipPayload
->): Promise<PartnershipResponse> => {
+}: Partnerstack.UpdateArgs<{ key: string }, UpdatePartnershipPayload>): Promise<PartnershipResponse> => {
   const { key } = pathParams;
 
   return (await api.patch(`${RESOURCE}/${key}`, payload))?.data;
 };
 
 /**Archives a partnership. */
-const deletePartnership = async ({
-  pathParams,
-}: Partnerstack.DeleteArgs<{ key: string }>): Promise<void> => {
+const deletePartnership = async ({ pathParams }: Partnerstack.DeleteArgs<{ key: string }>): Promise<void> => {
   return api.delete(`${RESOURCE}/${pathParams.key}`);
 };
 

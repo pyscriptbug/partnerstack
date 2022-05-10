@@ -14,16 +14,12 @@ const getAllActions = async ({ queryParams = {} }: Partnerstack.GetAllArgs = {})
 };
 
 /**Records a new action taken by a given partner or customer, and the number of times that action was performed. */
-const createAction = async ({
-  payload,
-}: Partnerstack.CreateArgs<{}, CreateActionPayload>): Promise<ActionResponse> => {
+const createAction = async ({ payload }: Partnerstack.CreateArgs<{}, CreateActionPayload>): Promise<ActionResponse> => {
   return (await api.post(`${RESOURCE}`, payload))?.data;
 };
 
 /**Archives an action. Any associated rewards or drip rewards will be archived as well. */
-const deleteAction = async ({
-  pathParams,
-}: Partnerstack.DeleteArgs<{ key: string }>): Promise<void> => {
+const deleteAction = async ({ pathParams }: Partnerstack.DeleteArgs<{ key: string }>): Promise<void> => {
   return api.delete(`${RESOURCE}/${pathParams.key}`);
 };
 

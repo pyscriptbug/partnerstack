@@ -19,10 +19,7 @@ export type TransactionData = {
   productKey?: string;
 };
 
-export type CreateTransactionPayload = Custom.OneOf<
-  TransactionData,
-  'customerKey' | 'customerExternalKey' | 'customerEmail'
->;
+export type CreateTransactionPayload = OneOf<TransactionData, 'customerKey' | 'customerExternalKey' | 'customerEmail'>;
 
 export type TransactionResponse = Partnerstack.StandardFields &
   Exclude<TransactionData, 'customerExternalKey' | 'customerEmail'> & {

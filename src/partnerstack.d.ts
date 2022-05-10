@@ -1,4 +1,20 @@
 declare namespace Partnerstack {
+  /**Arguments for the partnerstack initializer function */
+  export type Initialize = {
+    /**
+     * The base URL for the public Partnerstack API. Default is `https://api.partnerstack.com/api/v2`
+     */
+    baseUrl?: string;
+    /**
+     * Your partnerstack public key.
+     */
+    apiKey: string;
+    /**
+     * Your partnerstack secret key.
+     */
+    apiSecret: string;
+  };
+
   /** T argument is the type of the response. */
   export type GetAllArgs<T = unknown> = {
     queryParams?: QueryParams<T>;
@@ -9,7 +25,7 @@ declare namespace Partnerstack {
    *
    * T argument is the type of the response.
    */
-  export type GetArgs<P, T = unkown> = {
+  export type GetArgs<P, T = unknown> = {
     pathParams: P;
     queryParams?: QueryParams<T>;
   };
@@ -19,7 +35,7 @@ declare namespace Partnerstack {
    *
    * T argument is the type of the response.
    */
-  export type CreateArgs<P, T = unkown> = {
+  export type CreateArgs<P, T = unknown> = {
     payload: T;
     pathParams?: P;
     queryParams?: QueryParams<T>;
@@ -30,7 +46,7 @@ declare namespace Partnerstack {
    *
    * T argument is the type of the response.
    */
-  export type UpdateArgs<P, T = unkown> = CreateArgs<P, T> & Required<{ pathParams: P }>;
+  export type UpdateArgs<P, T = unknown> = CreateArgs<P, T> & Required<{ pathParams: P }>;
   /** P argument is the object containing the path parameters.*/
   export type DeleteArgs<P> = GetArgs<P>;
 
@@ -54,7 +70,7 @@ declare namespace Partnerstack {
     /**Applies a maximum epoch timestamp (ms) filter to the response created_at.*/
     maxCreated?: number;
     /**The field in which the results are ordered by. A - prefix denotes that the results are in descending order.*/
-    orderBy?: keyof T | `-${Custom.StringLiteral<keyof T>}`;
+    orderBy?: keyof T | `-${StringLiteral<keyof T>}`;
     /** Will filter for partnerships who are in a group with the specified name. Name must have spaces and special characters removed.*/
     group?: string;
     /**Group key in which the results are filtered by */

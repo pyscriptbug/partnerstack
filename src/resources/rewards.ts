@@ -14,9 +14,7 @@ const getAllRewards = async ({ queryParams = {} }: Partnerstack.GetAllArgs = {})
 };
 
 /**Creates a new reward for a given target. */
-const createReward = async ({
-  payload,
-}: Partnerstack.CreateArgs<{}, CreateRewardPayload>): Promise<RewardResponse> => {
+const createReward = async ({ payload }: Partnerstack.CreateArgs<{}, CreateRewardPayload>): Promise<RewardResponse> => {
   return (await api.post(`${RESOURCE}`, payload))?.data;
 };
 

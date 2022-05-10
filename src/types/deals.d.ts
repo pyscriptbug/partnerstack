@@ -1,6 +1,6 @@
 export type DealSource = 'partner' | 'vendor';
 
-export type CreateDealPayload = Custom.OneOf<
+export type CreateDealPayload = OneOf<
   {
     /**The unique key of the partner who owns this deal. Required if 'source' is specified as 'partner'. */
     partnerKey: string;

@@ -42,9 +42,7 @@ const updateCustomer = async ({
 };
 
 /**Deletes a customer with a given customer key. */
-const deleteCustomer = async ({
-  pathParams,
-}: Partnerstack.DeleteArgs<{ key: string }>): Promise<void> => {
+const deleteCustomer = async ({ pathParams }: Partnerstack.DeleteArgs<{ key: string }>): Promise<void> => {
   return api.delete(`${RESOURCE}/${pathParams.key}`);
 };
 

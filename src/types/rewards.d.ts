@@ -19,7 +19,9 @@ export type ListRewardResponse = RewardResponse & {
   /**The action associated with this reward. */
   action: Pick<ActionResponse, 'key' | 'type' | 'value'>;
   /**The customer associated with this reward. */
-  customer: Pick<CustomerResponse, 'key' | 'email' | 'name'> & { externalKey: string };
+  customer: Pick<CustomerResponse, 'key' | 'email' | 'name'> & {
+    externalKey: string;
+  };
   /**The invoice associated with this reward. */
   invoice: Invoice;
   /**The offer associated with this reward. */

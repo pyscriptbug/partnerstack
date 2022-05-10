@@ -25,9 +25,7 @@ const getLead = async ({
 };
 
 /**Creates a lead with desired params. */
-const createLead = async ({
-  payload,
-}: Partnerstack.CreateArgs<{}, LeadPayload>): Promise<LeadResponse> => {
+const createLead = async ({ payload }: Partnerstack.CreateArgs<{}, LeadPayload>): Promise<LeadResponse> => {
   return (await api.post(`${RESOURCE}`, payload))?.data;
 };
 
@@ -42,9 +40,7 @@ const updateLead = async ({
 };
 
 /**Archives the specified lead.*/
-const deleteLead = async ({
-  pathParams,
-}: Partnerstack.DeleteArgs<{ key: string }>): Promise<void> => {
+const deleteLead = async ({ pathParams }: Partnerstack.DeleteArgs<{ key: string }>): Promise<void> => {
   return api.delete(`${RESOURCE}/${pathParams.key}`);
 };
 

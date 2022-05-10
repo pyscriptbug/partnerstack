@@ -1,14 +1,6 @@
-import { isArray, isEmpty } from 'lodash';
+import { isArray } from 'lodash';
 
-export const isEmptyOrInvalid = (obj) => {
-  if (isEmpty(obj)) return true;
-
-  if (Object.values(obj).every((v) => v === undefined)) return true;
-
-  return false;
-};
-
-export const camelCaseToSnakeCase = (obj: any) => {
+export const camelCaseToSnakeCase = (obj: any): any => {
   if (typeof obj !== 'object') return obj;
 
   return Object.entries(obj).reduce((acc, [key, value]) => {
@@ -20,7 +12,7 @@ export const camelCaseToSnakeCase = (obj: any) => {
   }, {});
 };
 
-export const snakeCaseToCamelCase = (obj: any) => {
+export const snakeCaseToCamelCase = (obj: any): any => {
   if (!obj || typeof obj !== 'object') return obj;
 
   return Object.entries(obj).reduce((acc, [key, value]) => {
