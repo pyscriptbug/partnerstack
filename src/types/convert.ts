@@ -3,7 +3,7 @@ export type ConvertPayload = {
   customerKey?: string;
 };
 
-export type ConvertResponse = Partnerstack.StandardFields &
+export type ConvertResponse = StandardFields &
   ConvertPayload & {
     /**
      * Additional custom fields for the customer that is configured in your PartnerStack dashboard.
@@ -15,7 +15,7 @@ export type ConvertResponse = Partnerstack.StandardFields &
     name: string;
     /** A unique identifier given by a payment provider (Stripe, Recurly, Chargebee etc) */
     providerKey: string;
-    fields: Partnerstack.StandardObject[];
+    fields: StandardObject[];
     /** The key of the partner that is responsible for the customer */
     partnerKey: string;
     /** Unique key of this partnership. */

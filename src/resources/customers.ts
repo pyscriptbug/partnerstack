@@ -1,6 +1,6 @@
-import { api } from '..';
+import { buildSearchQueryParams } from '../utils/utils';
+import { api } from '../initialize';
 import { CreateCustomerPayload, CustomerResponse, UpdateCustomerPayload } from '../types';
-import { buildSearchQueryParams } from '../../utils/utils';
 
 const RESOURCE = 'customers';
 
@@ -8,8 +8,8 @@ const RESOURCE = 'customers';
  * Returns a list of your customers. The customers are returned sorted by creation date by default, with the most recent
  * customers appearing first.
  */
-const getAllCustomers = async ({ queryParams = {} }: Partnerstack.GetAllArgs = {}): Promise<
-  Partnerstack.ListResponse<CustomerResponse>
+const getAllCustomers = async ({ queryParams = {} }: GetAllArgs = {}): Promise<
+  ListResponse<CustomerResponse>
 > => {
   const queryString = buildSearchQueryParams(queryParams);
 
@@ -23,7 +23,7 @@ const getAllCustomers = async ({ queryParams = {} }: Partnerstack.GetAllArgs = {
 const getCustomer = async ({
   pathParams,
   queryParams = {},
-}: Partnerstack.GetArgs<{ key: string }>): Promise<CustomerResponse> => {
+}: GetArgs<{ key: string }>): Promise<CustomerResponse> => {
   const queryString = buildSearchQueryParams(queryParams);
   const { key } = pathParams;
 
@@ -33,7 +33,7 @@ const getCustomer = async ({
 /** Creates a new customer with the data provided. */
 const createCustomer = async ({
   payload,
-}: Partnerstack.CreateArgs<{}, CreateCustomerPayload>): Promise<CustomerResponse> => {
+}: CreateArgs<{}, CreateCustomerPayload>): Promise<CustomerResponse> => {
   return (await api.post(`${RESOURCE}`, payload))?.data;
 };
 
@@ -41,14 +41,14 @@ const createCustomer = async ({
 const updateCustomer = async ({
   payload,
   pathParams,
-}: Partnerstack.UpdateArgs<{ key: string }, UpdateCustomerPayload>): Promise<CustomerResponse> => {
+}: UpdateArgs<{ key: string }, UpdateCustomerPayload>): Promise<CustomerResponse> => {
   const { key } = pathParams;
 
   return (await api.patch(`${RESOURCE}/${key}`, payload))?.data;
 };
 
 /** Deletes a customer with a given customer key. */
-const deleteCustomer = async ({ pathParams }: Partnerstack.DeleteArgs<{ key: string }>): Promise<void> => {
+const deleteCustomer = async ({ pathParams }: DeleteArgs<{ key: string }>): Promise<void> => {
   return api.delete(`${RESOURCE}/${pathParams.key}`);
 };
 

@@ -7,7 +7,7 @@ export type LeadData = {
   externalKey: string;
   /** @deprecated Use `fields` instead. */
   fieldData: Record<string, string>;
-  fields: Partnerstack.StandardObject[];
+  fields: StandardObject[];
   groupKey: string;
   /**
    * Key value pairs that store additional information about this lead. First and last name required. Other eligable
@@ -23,6 +23,6 @@ export type LeadData = {
   status: 'open' | 'closed' | 'dead' | 'closed won' | 'closed lost';
 };
 
-export type LeadResponse = Partnerstack.StandardFields & LeadData;
+export type LeadResponse = StandardFields & LeadData;
 
 export type LeadPayload = LeadData;

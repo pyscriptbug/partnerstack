@@ -1,6 +1,6 @@
 import { GroupData } from './groups';
 
-export type FormTemplateResponse = Partnerstack.StandardFields & {
+export type FormTemplateResponse = StandardFields & {
   /** A description for users to better understand the form */
   description: string;
   /** The presented name of this form */
@@ -13,7 +13,7 @@ export type FormTemplateResponse = Partnerstack.StandardFields & {
   groups: GroupData[];
 };
 
-type Field = Exclude<Partnerstack.StandardObject, 'apiName' | 'externalType' | 'fieldKey' | 'value'> & {
+type Field = Exclude<StandardObject, 'apiName' | 'externalType' | 'fieldKey' | 'value'> & {
   /** The default value that will be pinned to this field on the resulting object if no value is provided */
   defaultValue: string;
   /** If provided, the response to the current field will map to responses of fields within maps_to array */

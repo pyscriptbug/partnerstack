@@ -1,4 +1,4 @@
-export type GroupData = Partnerstack.StandardFields & {
+export type GroupData = StandardFields & {
   /** Whether or not this group is still active */
   archived: boolean;
   /** Whether this is the default Group for partners to join */

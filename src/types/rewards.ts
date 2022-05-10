@@ -12,7 +12,7 @@ export type RewardData = {
 };
 
 export type CreateRewardPayload = RewardData;
-export type RewardResponse = Partnerstack.StandardFields & RewardData;
+export type RewardResponse = StandardFields & RewardData;
 export type ListRewardResponse = RewardResponse & {
   /** The status of the reward. Can be one of: hold, pending, approved, declined, paid. */
   rewardStatus: 'hold' | 'pending' | 'approved' | 'declined' | 'paid';

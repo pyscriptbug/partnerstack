@@ -1,11 +1,11 @@
 import { GroupData } from './groups';
 
-export type PartnershipData = Partnerstack.Manager & {
+export type PartnershipData = Manager & {
   /** The email of the partner. */
   email: string;
   /** @deprecated `fields` should be the source of truth */
   fieldData?: Record<string, string>;
-  fields?: Partnerstack.StandardObject[];
+  fields?: StandardObject[];
   /** The first name of the partner. */
   firstName?: string;
   /** The last name of the partner. */
@@ -25,7 +25,7 @@ export type PartnershipData = Partnerstack.Manager & {
 
 export type CreatePartnershipPayload = PartnershipData;
 export type UpdatePartnershipPayload = {
-  fields?: Partnerstack.StandardObject[];
+  fields?: StandardObject[];
   /** The key of the group within PartnerStack that you want this partner to be placed into. */
   groupKey?: string;
   /** The email of the partner manager that you would like to assign this partner. */
@@ -34,19 +34,19 @@ export type UpdatePartnershipPayload = {
   tierKey?: string;
 };
 
-export type PartnershipResponse = Partnerstack.StandardFields &
+export type PartnershipResponse = StandardFields &
   PartnershipData & {
     group: GroupData;
-    tier: Partnerstack.Tier;
-    team: Partnerstack.Team;
+    tier: Tier;
+    team: Team;
   };
 
-export type ListPartnershipResponse = Partnerstack.StandardFields &
+export type ListPartnershipResponse = StandardFields &
   Pick<PartnershipResponse, 'email' | 'firstName' | 'lastName' | 'group' | 'team' | 'tags'> & {
     /** Timestamp for when the partner joined partnerstack */
     joinedAt: number;
     /** Partnership's manager information if applicable */
-    manager: Partnerstack.Manager;
+    manager: Manager;
     /** Partnership metadata */
     mdata: Record<string, string>;
     /** Key used externally when referencing the partnership */

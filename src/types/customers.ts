@@ -13,10 +13,10 @@ export type CustomerData = {
   meta?: Record<string, string>;
 };
 
-export type CustomerResponse = Partnerstack.StandardFields &
-  Partnerstack.SourceFields &
+export type CustomerResponse = StandardFields &
+  SourceFields &
   CustomerData & {
-    fields?: Partnerstack.StandardObject[];
+    fields?: StandardObject[];
   };
 
 export type CreateCustomerPayload = CustomerData;

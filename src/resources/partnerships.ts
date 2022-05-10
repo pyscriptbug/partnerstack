@@ -1,11 +1,11 @@
-import { api } from '..';
+import { buildSearchQueryParams } from '../utils/utils';
+import { api } from '../initialize';
 import {
   CreatePartnershipPayload,
   ListPartnershipResponse,
   PartnershipResponse,
-  UpdatePartnershipPayload,
+  UpdatePartnershipPayload
 } from '../types';
-import { buildSearchQueryParams } from '../../utils/utils';
 
 const RESOURCE = 'partnerships';
 
@@ -13,8 +13,8 @@ const RESOURCE = 'partnerships';
  * Returns a list of your partnerships. The partnerships are returned sorted by creation date by default, with the most
  * recent partnerships appearing first.
  */
-const getAllPartnerships = async ({ queryParams = {} }: Partnerstack.GetAllArgs = {}): Promise<
-  Partnerstack.ListResponse<ListPartnershipResponse>
+const getAllPartnerships = async ({ queryParams = {} }: GetAllArgs = {}): Promise<
+  ListResponse<ListPartnershipResponse>
 > => {
   const queryString = buildSearchQueryParams(queryParams);
 
@@ -28,7 +28,7 @@ const getAllPartnerships = async ({ queryParams = {} }: Partnerstack.GetAllArgs 
 const getPartnership = async ({
   pathParams,
   queryParams = {},
-}: Partnerstack.GetArgs<{ key: string }>): Promise<PartnershipResponse> => {
+}: GetArgs<{ key: string }>): Promise<PartnershipResponse> => {
   const queryString = buildSearchQueryParams(queryParams);
   const { key } = pathParams;
 
@@ -38,7 +38,7 @@ const getPartnership = async ({
 /** Creates a partnership with desired params. */
 const createPartnership = async ({
   payload,
-}: Partnerstack.CreateArgs<{}, CreatePartnershipPayload>): Promise<PartnershipResponse> => {
+}: CreateArgs<{}, CreatePartnershipPayload>): Promise<PartnershipResponse> => {
   return (await api.post(`${RESOURCE}`, payload))?.data;
 };
 
@@ -46,14 +46,14 @@ const createPartnership = async ({
 const updatePartnership = async ({
   payload,
   pathParams,
-}: Partnerstack.UpdateArgs<{ key: string }, UpdatePartnershipPayload>): Promise<PartnershipResponse> => {
+}: UpdateArgs<{ key: string }, UpdatePartnershipPayload>): Promise<PartnershipResponse> => {
   const { key } = pathParams;
 
   return (await api.patch(`${RESOURCE}/${key}`, payload))?.data;
 };
 
 /** Archives a partnership. */
-const deletePartnership = async ({ pathParams }: Partnerstack.DeleteArgs<{ key: string }>): Promise<void> => {
+const deletePartnership = async ({ pathParams }: DeleteArgs<{ key: string }>): Promise<void> => {
   return api.delete(`${RESOURCE}/${pathParams.key}`);
 };
 

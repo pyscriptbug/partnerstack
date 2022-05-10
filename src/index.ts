@@ -1,2 +1,2 @@
-export * from './initialize';
 export * from './api';
+export * from './initialize'

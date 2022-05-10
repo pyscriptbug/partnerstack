@@ -1,12 +1,12 @@
-import { api } from '..';
+import { buildSearchQueryParams } from '../utils/utils';
+import { api } from '../initialize';
 import { ConvertPayload, ConvertResponse, CreateDealPayload, DealResponse, UpdateDealPayload } from '../types';
-import { buildSearchQueryParams } from '../../utils/utils';
 
 const RESOURCE = 'deals';
 
 /** Returns a list of your deals. The deals are returned sorted by creation date, with the most recent deals appearing first. */
-const getAllDeals = async ({ queryParams = {} }: Partnerstack.GetAllArgs = {}): Promise<
-  Partnerstack.ListResponse<DealResponse>
+const getAllDeals = async ({ queryParams = {} }: GetAllArgs = {}): Promise<
+  ListResponse<DealResponse>
 > => {
   const queryString = buildSearchQueryParams(queryParams);
 
@@ -17,7 +17,7 @@ const getAllDeals = async ({ queryParams = {} }: Partnerstack.GetAllArgs = {}): 
 const getDeal = async ({
   pathParams,
   queryParams = {},
-}: Partnerstack.GetArgs<{ key: string }>): Promise<DealResponse> => {
+}: GetArgs<{ key: string }>): Promise<DealResponse> => {
   const queryString = buildSearchQueryParams(queryParams);
   const { key } = pathParams;
 
@@ -25,7 +25,7 @@ const getDeal = async ({
 };
 
 /** Creates a deal with desired params. */
-const createDeal = async ({ payload }: Partnerstack.CreateArgs<{}, CreateDealPayload>): Promise<DealResponse> => {
+const createDeal = async ({ payload }: CreateArgs<{}, CreateDealPayload>): Promise<DealResponse> => {
   return (await api.post(`${RESOURCE}`, payload))?.data;
 };
 
@@ -33,14 +33,14 @@ const createDeal = async ({ payload }: Partnerstack.CreateArgs<{}, CreateDealPay
 const updateDeal = async ({
   payload,
   pathParams,
-}: Partnerstack.UpdateArgs<{ key: string }, UpdateDealPayload>): Promise<DealResponse> => {
+}: UpdateArgs<{ key: string }, UpdateDealPayload>): Promise<DealResponse> => {
   const { key } = pathParams;
 
   return (await api.patch(`${RESOURCE}/${key}`, payload))?.data;
 };
 
 /** Archives the specified deal */
-const deleteDeal = async ({ pathParams }: Partnerstack.DeleteArgs<{ key: string }>): Promise<void> => {
+const deleteDeal = async ({ pathParams }: DeleteArgs<{ key: string }>): Promise<void> => {
   return api.delete(`${RESOURCE}/${pathParams.key}`);
 };
 
@@ -48,7 +48,7 @@ const deleteDeal = async ({ pathParams }: Partnerstack.DeleteArgs<{ key: string 
 const convertDeal = async ({
   payload,
   pathParams,
-}: Partnerstack.UpdateArgs<{ key: string }, ConvertPayload>): Promise<ConvertResponse> => {
+}: UpdateArgs<{ key: string }, ConvertPayload>): Promise<ConvertResponse> => {
   const { key } = pathParams;
 
   return (await api.post(`${RESOURCE}/${key}/convert`, payload))?.data;

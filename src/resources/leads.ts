@@ -1,12 +1,12 @@
-import { api } from '..';
+import { buildSearchQueryParams } from '../utils/utils';
+import { api } from '../initialize';
 import { ConvertPayload, ConvertResponse, LeadPayload, LeadResponse } from '../types';
-import { buildSearchQueryParams } from '../../utils/utils';
 
 const RESOURCE = 'leads';
 
 /** Returns a list of your leads. The leads are returned sorted by creation date, with the most recent leads appearing first. */
-const getAllLeads = async ({ queryParams = {} }: Partnerstack.GetAllArgs = {}): Promise<
-  Partnerstack.ListResponse<LeadResponse>
+const getAllLeads = async ({ queryParams = {} }: GetAllArgs = {}): Promise<
+  ListResponse<LeadResponse>
 > => {
   const queryString = buildSearchQueryParams(queryParams);
 
@@ -17,7 +17,7 @@ const getAllLeads = async ({ queryParams = {} }: Partnerstack.GetAllArgs = {}): 
 const getLead = async ({
   pathParams,
   queryParams = {},
-}: Partnerstack.GetArgs<{ key: string }>): Promise<LeadResponse> => {
+}: GetArgs<{ key: string }>): Promise<LeadResponse> => {
   const queryString = buildSearchQueryParams(queryParams);
   const { key } = pathParams;
 
@@ -25,7 +25,7 @@ const getLead = async ({
 };
 
 /** Creates a lead with desired params. */
-const createLead = async ({ payload }: Partnerstack.CreateArgs<{}, LeadPayload>): Promise<LeadResponse> => {
+const createLead = async ({ payload }: CreateArgs<{}, LeadPayload>): Promise<LeadResponse> => {
   return (await api.post(`${RESOURCE}`, payload))?.data;
 };
 
@@ -33,14 +33,14 @@ const createLead = async ({ payload }: Partnerstack.CreateArgs<{}, LeadPayload>)
 const updateLead = async ({
   payload,
   pathParams,
-}: Partnerstack.UpdateArgs<{ key: string }, LeadPayload>): Promise<LeadResponse> => {
+}: UpdateArgs<{ key: string }, LeadPayload>): Promise<LeadResponse> => {
   const { key } = pathParams;
 
   return (await api.patch(`${RESOURCE}/${key}`, payload))?.data;
 };
 
 /** Archives the specified lead. */
-const deleteLead = async ({ pathParams }: Partnerstack.DeleteArgs<{ key: string }>): Promise<void> => {
+const deleteLead = async ({ pathParams }: DeleteArgs<{ key: string }>): Promise<void> => {
   return api.delete(`${RESOURCE}/${pathParams.key}`);
 };
 
@@ -48,7 +48,7 @@ const deleteLead = async ({ pathParams }: Partnerstack.DeleteArgs<{ key: string 
 const convertLead = async ({
   payload,
   pathParams,
-}: Partnerstack.UpdateArgs<{ key: string }, ConvertPayload>): Promise<ConvertResponse> => {
+}: UpdateArgs<{ key: string }, ConvertPayload>): Promise<ConvertResponse> => {
   const { key } = pathParams;
 
   return (await api.post(`${RESOURCE}/${key}/convert`, payload))?.data;

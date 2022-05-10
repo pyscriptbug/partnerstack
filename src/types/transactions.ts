@@ -24,7 +24,7 @@ export type TransactionData = {
 
 export type CreateTransactionPayload = OneOf<TransactionData, 'customerKey' | 'customerExternalKey' | 'customerEmail'>;
 
-export type TransactionResponse = Partnerstack.StandardFields &
+export type TransactionResponse = StandardFields &
   Exclude<TransactionData, 'customerExternalKey' | 'customerEmail'> & {
     /** Transaction amount in cents converted to USD. */
     amountUsd: number;

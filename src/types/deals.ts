@@ -22,7 +22,7 @@ export type CreateDealPayload = OneOf<
     stage?: string;
     /** @deprecated Use `fields` instead. */
     fieldData?: Record<string, string>;
-    fields?: Partnerstack.StandardObject[];
+    fields?: StandardObject[];
     meta?: Record<string, string>;
   },
   'partnerKey' | 'groupKey'
@@ -31,8 +31,8 @@ export type CreateDealPayload = OneOf<
 export type UpdateDealPayload = Exclude<CreateDealPayload, 'partnerKey' | 'groupKey'>;
 
 export type DealResponse = CreateDealPayload &
-  Pick<Partnerstack.StandardFields, 'key' | 'createdAt'> & {
+  Pick<StandardFields, 'key' | 'createdAt'> & {
     moldKey: string;
-    team: Partnerstack.Team;
-    teamMember: Partnerstack.TeamMember;
+    team: Team;
+    teamMember: TeamMember;
   };
