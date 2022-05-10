@@ -7,5 +7,4 @@ export * from './leads';
 export * from './partnerships';
 export * from './rewards';
 export * from './transactions';
-export * from './webhooks';
 export * from './convert';
