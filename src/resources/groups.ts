@@ -1,4 +1,4 @@
-import { api } from '../';
+import { api } from '..';
 import { GroupResponse } from '../types';
 import { buildSearchQueryParams } from '../../utils/utils';
 

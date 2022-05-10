@@ -1,12 +1,12 @@
 {
   "name": "partnerstack",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Partnerstack fully typed API sdk",
-  "main": "index.ts",
+  "main": "lib/src/index.ts",
   "scripts": {
     "test": "jest --config jest.json",
-    "build": "tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "build": "tsc --build",
+    "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
@@ -24,17 +24,14 @@
     "api"
   ],
   "author": "Catriel Guillen",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/pyscriptbug/partnerstack/issues"
   },
   "homepage": "https://github.com/pyscriptbug/partnerstack#readme",
   "dependencies": {
     "axios": "^0.27.2",
-    "i": "^0.3.7",
     "lodash": "^4.17.21",
-    "npm": "^8.9.0",
-    "prettier-plugin-jsdoc": "^0.3.38",
     "query-string": "^7.1.1"
   },
   "devDependencies": {
@@ -45,6 +42,7 @@
     "ts-jest": "^28.0.2",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
+    "prettier-plugin-jsdoc": "^0.3.38",
     "typescript": "^4.6.4"
   },
   "files": [

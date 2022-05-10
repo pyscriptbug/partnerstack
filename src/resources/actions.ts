@@ -1,4 +1,4 @@
-import { api } from '../';
+import { api } from '..';
 import { ActionResponse, CreateActionPayload, ListActionResponse } from '../types';
 import { buildSearchQueryParams } from '../../utils/utils';
 

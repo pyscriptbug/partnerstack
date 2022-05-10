@@ -1,4 +1,4 @@
-import { api } from '../';
+import { api } from '..';
 import { ConvertPayload, ConvertResponse, CreateDealPayload, DealResponse, UpdateDealPayload } from '../types';
 import { buildSearchQueryParams } from '../../utils/utils';
 

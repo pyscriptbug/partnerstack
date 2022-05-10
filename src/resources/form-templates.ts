@@ -1,4 +1,4 @@
-import { api } from '../';
+import { api } from '..';
 import { FormTemplateResponse } from '../types';
 import { buildSearchQueryParams } from '../../utils/utils';
 

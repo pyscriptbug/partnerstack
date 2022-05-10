@@ -1,4 +1,4 @@
-import { api } from '../';
+import { api } from '..';
 import { CreateCustomerPayload, CustomerResponse, UpdateCustomerPayload } from '../types';
 import { buildSearchQueryParams } from '../../utils/utils';
 
