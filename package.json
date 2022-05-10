@@ -1,7 +1,8 @@
 {
   "name": "partnerstack",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Partnerstack fully typed API sdk",
+  "main": "lib/index.js",
   "scripts": {
     "test": "jest --config jest.json",
     "build": "tsc --build",
@@ -31,7 +32,6 @@
   "dependencies": {
     "axios": "^0.27.2",
     "lodash": "^4.17.21",
-    "partnerstack": "^0.0.3",
     "query-string": "^7.1.1"
   },
   "devDependencies": {
