@@ -5,7 +5,7 @@ import { camelCaseToSnakeCase, snakeCaseToCamelCase } from './utils/utils';
 export let instance: AxiosInstance;
 
 export const initializePartnerstack = ({ baseUrl, apiKey, apiSecret }: Initialize) => {
-    instance = axios.create({
+  instance = axios.create({
     baseURL: baseUrl || 'https://api.partnerstack.com/api/v2',
     auth: {
       username: apiKey,
