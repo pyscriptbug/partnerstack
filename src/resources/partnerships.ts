@@ -4,7 +4,7 @@ import {
   CreatePartnershipPayload,
   ListPartnershipResponse,
   PartnershipResponse,
-  UpdatePartnershipPayload
+  UpdatePartnershipPayload,
 } from '../types';
 import { buildSearchQueryParams } from '../utils/utils';
 

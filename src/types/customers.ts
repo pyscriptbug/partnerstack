@@ -1,4 +1,4 @@
-import { SourceFields, StandardFields, StandardObject } from "../global";
+import { SourceFields, StandardFields, StandardObject } from '../global';
 
 export type CustomerData = {
   /** External customer key that can be configured on creation. */

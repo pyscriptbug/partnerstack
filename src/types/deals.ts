@@ -1,4 +1,4 @@
-import { OneOf, StandardFields, StandardObject, Team, TeamMember } from "../global";
+import { OneOf, StandardFields, StandardObject, Team, TeamMember } from '../global';
 
 export type DealSource = 'partner' | 'vendor';
 
