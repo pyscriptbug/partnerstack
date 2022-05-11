@@ -1,8 +1,12 @@
 # partnerstack
 Partnerstack API fully typed sdk
 
+### Installing
+Run the following command under your project
+- `npm i partnerstack`
+
 ### Initializing
-first you need to initialize the parnerstack instance as the following
+First you need to initialize the parnerstack instance as the following
 ```javascript
 import { initializePartnerstack } from 'partnerstack';
 
