@@ -1,3 +1,4 @@
+import { StandardFields, StandardObject } from '../global';
 import { GroupData } from './groups';
 
 export type FormTemplateResponse = StandardFields & {

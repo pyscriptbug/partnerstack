@@ -1,6 +1,4 @@
-export {};
 
-declare global {
   /**
    * Require only one of the specified properties. If all properties are present, it will raise an error.
    *
@@ -203,4 +201,4 @@ declare global {
     /** Options to select from if this field is a picklist/checkbox */
     options?: Record<string, string>;
   };
-}
+

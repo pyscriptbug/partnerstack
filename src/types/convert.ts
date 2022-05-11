@@ -1,3 +1,5 @@
+import { StandardFields, StandardObject } from "../global";
+
 export type ConvertPayload = {
   email: string;
   customerKey?: string;

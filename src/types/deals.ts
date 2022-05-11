@@ -1,3 +1,5 @@
+import { OneOf, StandardFields, StandardObject, Team, TeamMember } from "../global";
+
 export type DealSource = 'partner' | 'vendor';
 
 export type CreateDealPayload = OneOf<

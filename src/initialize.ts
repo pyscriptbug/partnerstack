@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { Initialize } from './global';
 import { camelCaseToSnakeCase, snakeCaseToCamelCase } from './utils/utils';
 
 export let api: AxiosInstance;

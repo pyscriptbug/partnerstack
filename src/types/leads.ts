@@ -1,3 +1,5 @@
+import { StandardFields, StandardObject } from "../global";
+
 export type LeadData = {
   /** Lead amount in cents */
   amount: number;

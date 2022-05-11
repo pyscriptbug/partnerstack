@@ -1,3 +1,4 @@
+import { StandardFields } from '../global';
 import { CustomerResponse } from './customers';
 
 export type ActionData = {

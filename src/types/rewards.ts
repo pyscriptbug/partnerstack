@@ -1,3 +1,4 @@
+import { StandardFields } from '../global';
 import { ActionResponse } from './actions';
 import { CustomerResponse } from './customers';
 import { PartnershipResponse } from './partnerships';

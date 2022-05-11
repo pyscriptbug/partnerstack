@@ -1,3 +1,5 @@
+import { StandardFields } from "../global";
+
 export type GroupData = StandardFields & {
   /** Whether or not this group is still active */
   archived: boolean;

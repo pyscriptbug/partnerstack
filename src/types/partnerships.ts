@@ -1,3 +1,4 @@
+import { Manager, StandardFields, StandardObject, Team, Tier } from '../global';
 import { GroupData } from './groups';
 
 export type PartnershipData = Manager & {

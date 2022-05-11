@@ -1,6 +1,7 @@
-import { buildSearchQueryParams } from '../utils/utils';
+import { CreateArgs, GetAllArgs, ListResponse } from '../global';
 import { api } from '../initialize';
 import { CreateRewardPayload, ListRewardResponse, RewardResponse } from '../types';
+import { buildSearchQueryParams } from '../utils/utils';
 
 const RESOURCE = 'rewards';
 
