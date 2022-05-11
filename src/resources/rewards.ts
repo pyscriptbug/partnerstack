@@ -1,5 +1,5 @@
 import { CreateArgs, GetAllArgs, ListResponse } from '../global';
-import { api } from '../initialize';
+import { instance } from '../initialize';
 import { CreateRewardPayload, ListRewardResponse, RewardResponse } from '../types';
 import { buildSearchQueryParams } from '../utils/utils';
 
@@ -12,12 +12,12 @@ const RESOURCE = 'rewards';
 const getAllRewards = async ({ queryParams = {} }: GetAllArgs = {}): Promise<ListResponse<ListRewardResponse>> => {
   const queryString = buildSearchQueryParams(queryParams);
 
-  return (await api.get(`${RESOURCE}${queryString}`))?.data;
+  return (await instance.get(`${RESOURCE}${queryString}`))?.data;
 };
 
 /** Creates a new reward for a given target. */
 const createReward = async ({ payload }: CreateArgs<{}, CreateRewardPayload>): Promise<RewardResponse> => {
-  return (await api.post(`${RESOURCE}`, payload))?.data;
+  return (await instance.post(`${RESOURCE}`, payload))?.data;
 };
 
 export default {

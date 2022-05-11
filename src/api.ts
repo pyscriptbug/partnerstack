@@ -8,7 +8,7 @@ import partnerships from './resources/partnerships';
 import rewards from './resources/rewards';
 import transactions from './resources/transactions';
 
-export default {
+export const api = {
   ...deals,
   ...actions,
   ...customers,

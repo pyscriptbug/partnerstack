@@ -1,5 +1,5 @@
 import { CreateArgs, GetAllArgs, ListResponse } from '../global';
-import { api } from '../initialize';
+import { instance } from '../initialize';
 import { CreateTransactionPayload, TransactionResponse } from '../types';
 import { buildSearchQueryParams } from '../utils/utils';
 
@@ -14,13 +14,13 @@ const getAllTransactions = async ({ queryParams = {} }: GetAllArgs = {}): Promis
 > => {
   const queryString = buildSearchQueryParams(queryParams);
 
-  return (await api.get(`${RESOURCE}${queryString}`))?.data;
+  return (await instance.get(`${RESOURCE}${queryString}`))?.data;
 };
 /** Creates a new transaction for a given target. */
 const createTransaction = async ({
   payload,
 }: CreateArgs<{}, CreateTransactionPayload>): Promise<TransactionResponse> => {
-  return (await api.post(`${RESOURCE}`, payload))?.data;
+  return (await instance.post(`${RESOURCE}`, payload))?.data;
 };
 
 export default {

@@ -1,5 +1,5 @@
 import { CreateArgs, DeleteArgs, GetAllArgs, GetArgs, ListResponse, UpdateArgs } from '../global';
-import { api } from '../initialize';
+import { instance } from '../initialize';
 import {
   CreatePartnershipPayload,
   ListPartnershipResponse,
@@ -19,7 +19,7 @@ const getAllPartnerships = async ({ queryParams = {} }: GetAllArgs = {}): Promis
 > => {
   const queryString = buildSearchQueryParams(queryParams);
 
-  return (await api.get(`${RESOURCE}${queryString}`))?.data;
+  return (await instance.get(`${RESOURCE}${queryString}`))?.data;
 };
 
 /**
@@ -33,14 +33,14 @@ const getPartnership = async ({
   const queryString = buildSearchQueryParams(queryParams);
   const { key } = pathParams;
 
-  return (await api.get(`${RESOURCE}/${key}${queryString}`))?.data;
+  return (await instance.get(`${RESOURCE}/${key}${queryString}`))?.data;
 };
 
 /** Creates a partnership with desired params. */
 const createPartnership = async ({
   payload,
 }: CreateArgs<{}, CreatePartnershipPayload>): Promise<PartnershipResponse> => {
-  return (await api.post(`${RESOURCE}`, payload))?.data;
+  return (await instance.post(`${RESOURCE}`, payload))?.data;
 };
 
 /** Updates the specific partnership by setting the values of the parameters passed. */
@@ -50,12 +50,12 @@ const updatePartnership = async ({
 }: UpdateArgs<{ key: string }, UpdatePartnershipPayload>): Promise<PartnershipResponse> => {
   const { key } = pathParams;
 
-  return (await api.patch(`${RESOURCE}/${key}`, payload))?.data;
+  return (await instance.patch(`${RESOURCE}/${key}`, payload))?.data;
 };
 
 /** Archives a partnership. */
 const deletePartnership = async ({ pathParams }: DeleteArgs<{ key: string }>): Promise<void> => {
-  return api.delete(`${RESOURCE}/${pathParams.key}`);
+  return instance.delete(`${RESOURCE}/${pathParams.key}`);
 };
 
 export default {

@@ -2,10 +2,10 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Initialize } from './global';
 import { camelCaseToSnakeCase, snakeCaseToCamelCase } from './utils/utils';
 
-export let api: AxiosInstance;
+export let instance: AxiosInstance;
 
 export const initializePartnerstack = ({ baseUrl, apiKey, apiSecret }: Initialize) => {
-  api = axios.create({
+    instance = axios.create({
     baseURL: baseUrl || 'https://api.partnerstack.com/api/v2',
     auth: {
       username: apiKey,
@@ -26,6 +26,6 @@ export const initializePartnerstack = ({ baseUrl, apiKey, apiSecret }: Initializ
     } as AxiosResponse;
   };
 
-  api.interceptors.request.use(onRequest, onError);
-  api.interceptors.response.use(onResponse, onError);
+  instance.interceptors.request.use(onRequest, onError);
+  instance.interceptors.response.use(onResponse, onError);
 };

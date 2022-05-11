@@ -1,5 +1,5 @@
 import { CreateArgs, DeleteArgs, GetAllArgs, ListResponse } from '../global';
-import { api } from '../initialize';
+import { instance } from '../initialize';
 import { ActionResponse, CreateActionPayload, ListActionResponse } from '../types';
 import { buildSearchQueryParams } from '../utils/utils';
 
@@ -12,17 +12,17 @@ const RESOURCE = 'actions';
 const getAllActions = async ({ queryParams = {} }: GetAllArgs = {}): Promise<ListResponse<ListActionResponse>> => {
   const queryString = buildSearchQueryParams(queryParams);
 
-  return (await api.get(`${RESOURCE}${queryString}`))?.data;
+  return (await instance.get(`${RESOURCE}${queryString}`))?.data;
 };
 
 /** Records a new action taken by a given partner or customer, and the number of times that action was performed. */
 const createAction = async ({ payload }: CreateArgs<{}, CreateActionPayload>): Promise<ActionResponse> => {
-  return (await api.post(`${RESOURCE}`, payload))?.data;
+  return (await instance.post(`${RESOURCE}`, payload))?.data;
 };
 
 /** Archives an action. Any associated rewards or drip rewards will be archived as well. */
 const deleteAction = async ({ pathParams }: DeleteArgs<{ key: string }>): Promise<void> => {
-  return api.delete(`${RESOURCE}/${pathParams.key}`);
+  return instance.delete(`${RESOURCE}/${pathParams.key}`);
 };
 
 export default {

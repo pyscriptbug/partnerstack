@@ -1,5 +1,5 @@
 import { GetAllArgs, ListResponse } from '../global';
-import { api } from '../initialize';
+import { instance } from '../initialize';
 import { FormTemplateResponse } from '../types';
 import { buildSearchQueryParams } from '../utils/utils';
 
@@ -14,7 +14,7 @@ const getAllFormTemplates = async ({ queryParams = {} }: GetAllArgs = {}): Promi
 > => {
   const queryString = buildSearchQueryParams(queryParams);
 
-  return (await api.get(`${RESOURCE}${queryString}`))?.data;
+  return (await instance.get(`${RESOURCE}${queryString}`))?.data;
 };
 
 export default {

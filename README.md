@@ -12,9 +12,9 @@ intializeParnerstack({ apiKey: "Your_API_key", secretKey: "Your_Secret_key" });
 ### Usage
 Then you can call any method from the `api`
 ```javascript
-import { api } from 'partnerstack';
+import { instance } from 'partnerstack';
 
-const deals = api.getAllDeals(); // will return an object with `hasMore` boolean and `items` containing every deal.
+const deals = instance.getAllDeals(); // will return an object with `hasMore` boolean and `items` containing every deal.
 ```
 
 For further docs see [Partnerstack Reference](https://docs.partnerstack.com/reference/auth)

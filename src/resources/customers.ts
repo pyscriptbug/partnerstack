@@ -1,5 +1,5 @@
 import { CreateArgs, DeleteArgs, GetAllArgs, GetArgs, ListResponse, UpdateArgs } from '../global';
-import { api } from '../initialize';
+import { instance } from '../initialize';
 import { CreateCustomerPayload, CustomerResponse, UpdateCustomerPayload } from '../types';
 import { buildSearchQueryParams } from '../utils/utils';
 
@@ -12,7 +12,7 @@ const RESOURCE = 'customers';
 const getAllCustomers = async ({ queryParams = {} }: GetAllArgs = {}): Promise<ListResponse<CustomerResponse>> => {
   const queryString = buildSearchQueryParams(queryParams);
 
-  return (await api.get(`${RESOURCE}${queryString}`))?.data;
+  return (await instance.get(`${RESOURCE}${queryString}`))?.data;
 };
 
 /**
@@ -23,12 +23,12 @@ const getCustomer = async ({ pathParams, queryParams = {} }: GetArgs<{ key: stri
   const queryString = buildSearchQueryParams(queryParams);
   const { key } = pathParams;
 
-  return (await api.get(`${RESOURCE}/${key}${queryString}`))?.data;
+  return (await instance.get(`${RESOURCE}/${key}${queryString}`))?.data;
 };
 
 /** Creates a new customer with the data provided. */
 const createCustomer = async ({ payload }: CreateArgs<{}, CreateCustomerPayload>): Promise<CustomerResponse> => {
-  return (await api.post(`${RESOURCE}`, payload))?.data;
+  return (await instance.post(`${RESOURCE}`, payload))?.data;
 };
 
 /** Updates a customer with the data provided. Any parameters not passed will not be updated. */
@@ -38,12 +38,12 @@ const updateCustomer = async ({
 }: UpdateArgs<{ key: string }, UpdateCustomerPayload>): Promise<CustomerResponse> => {
   const { key } = pathParams;
 
-  return (await api.patch(`${RESOURCE}/${key}`, payload))?.data;
+  return (await instance.patch(`${RESOURCE}/${key}`, payload))?.data;
 };
 
 /** Deletes a customer with a given customer key. */
 const deleteCustomer = async ({ pathParams }: DeleteArgs<{ key: string }>): Promise<void> => {
-  return api.delete(`${RESOURCE}/${pathParams.key}`);
+  return instance.delete(`${RESOURCE}/${pathParams.key}`);
 };
 
 export default {

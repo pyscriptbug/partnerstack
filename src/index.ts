@@ -1,2 +1,2 @@
-export * from './api';
-export * from './initialize';
+export { api } from './api';
+export { initializePartnerstack } from './initialize';
