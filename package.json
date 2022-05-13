@@ -1,6 +1,6 @@
 {
   "name": "partnerstack",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Partnerstack fully typed API sdk",
   "main": "lib/index.js",
   "scripts": {
