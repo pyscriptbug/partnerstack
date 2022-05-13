@@ -4,7 +4,20 @@ import { camelCaseToSnakeCase, snakeCaseToCamelCase } from './utils/utils';
 
 export let instance: AxiosInstance;
 
-export const initializePartnerstack = ({ baseUrl, apiKey, apiSecret }: Initialize) => {
+const defaultOnError = (error: Error) => Promise.reject(error);
+
+const onRequest = (req: AxiosRequestConfig) => {
+  return { ...req, data: camelCaseToSnakeCase(req.data) } as AxiosRequestConfig;
+};
+
+const onResponse = (res: AxiosResponse) => {
+  return {
+    ...res,
+    data: snakeCaseToCamelCase(res.data?.data || res.data),
+  } as AxiosResponse;
+};
+
+export const initializePartnerstack = ({ baseUrl, apiKey, apiSecret, onError }: Initialize) => {
   instance = axios.create({
     baseURL: baseUrl || 'https://api.partnerstack.com/api/v2',
     auth: {
@@ -13,19 +26,6 @@ export const initializePartnerstack = ({ baseUrl, apiKey, apiSecret }: Initializ
     },
   });
 
-  const onError = (error: Error) => Promise.reject(error);
-
-  const onRequest = (req: AxiosRequestConfig) => {
-    return { ...req, data: camelCaseToSnakeCase(req.data) } as AxiosRequestConfig;
-  };
-
-  const onResponse = (res: AxiosResponse) => {
-    return {
-      ...res,
-      data: snakeCaseToCamelCase(res.data?.data || res.data),
-    } as AxiosResponse;
-  };
-
-  instance.interceptors.request.use(onRequest, onError);
-  instance.interceptors.response.use(onResponse, onError);
+  instance.interceptors.request.use(onRequest, onError || defaultOnError);
+  instance.interceptors.response.use(onResponse, onError || defaultOnError);
 };

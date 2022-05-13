@@ -25,6 +25,8 @@ export type Initialize = {
   apiKey: string;
   /** Your partnerstack secret key. */
   apiSecret: string;
+  /** Error handler callback for every API request */
+  onError?: (error: Error) => Promise<never>;
 };
 
 /** T argument is the type of the response. */
