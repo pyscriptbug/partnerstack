@@ -1,5 +1,5 @@
-# partnerstack
-Partnerstack API fully typed sdk
+# Unofficial Nodejs Partnerstack API, by pyscriptbug
+Fully typed Partnerstack API sdk
 
 ### Installing
 Run the following command under your project
