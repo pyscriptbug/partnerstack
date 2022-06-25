@@ -1,4 +1,4 @@
-# Unofficial Nodejs Partnerstack API, by pyscriptbug
+# Unofficial Nodejs Partnerstack API
 Fully typed Partnerstack API sdk
 
 ### Installing
